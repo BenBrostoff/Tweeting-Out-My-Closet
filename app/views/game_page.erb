@@ -6,14 +6,14 @@
 <div id="shuffle">
 <form action="" >
 <ul>
-<li><input type="radio" value"<%= answer = User.find(@tweet.user_id).name %>"> <%= User.find(@tweet.user_id).name %> </li><br>
+<li><input type="radio" value="<%= answer = User.find(@tweet.user_id) %>"><%=answer.name %><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(answer.email)%>"></li><br>
 
 <% array = (1..User.last.id).to_a %>
 <% array = array.find_all{ |id| id != User.find(@tweet.user_id).id } %>
 
 
 <% 4.times do %>
- <li> <input class="radio" type="radio" value="<%= answer = User.find(array.sample).name %>"><%=answer %></li><br>
+ <li> <input class="radio" type="radio" value="<%= answer = User.find(array.sample) %>"><%=answer.name %> <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(answer.email)%>"></li><br>
 <% end %>
 </ul>
 </form>
