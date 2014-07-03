@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-# BCyrpt
+# Twitter
+gem 'twitter'
 
+# BCyrpt
 gem 'bcrypt'
 
 # PostgreSQL driver
@@ -15,8 +17,8 @@ gem 'sinatra-contrib'
 # Use Thin for our web server
 gem 'thin'
 
-gem 'activesupport', '~>4.1'
-gem 'activerecord', '~>4.1'
+gem 'activesupport'
+gem 'activerecord'
 
 gem 'rake'
 
