@@ -1,2 +1,20 @@
 <%= @tweet.datetime %>
 <%= @tweet.text %>
+
+<h2> Who do you think tweeted this gem? </h2>
+
+<div id="shuffle">
+<form action="" >
+<ul>
+<li><input type="radio" value"<%= answer = User.find(@tweet.user_id).name %>"> <%= User.find(@tweet.user_id).name %> </li><br>
+
+<% array = (1..User.last.id).to_a %>
+<% array = array.find_all{ |id| id != User.find(@tweet.user_id).id } %>
+
+
+<% 4.times do %>
+ <li> <input class="radio" type="radio" value="<%= answer = User.find(array.sample).name %>"><%=answer %></li><br>
+<% end %>
+</ul>
+</form>
+</div>
