@@ -31,14 +31,23 @@ post '/game/:tweet_id/votes/:vote_id' do #votes are created in this handler
 
 end
 
-post '/play/guess/:user_id' do
-  right = User.find(params[:user_id]).name
-  if params[:choice] == params[:user_id]
-    @message = "Correct! You know your cohort well :-)"
+post '/play/guess/:author_id' do
+#ran into issues here - AJAX / json can't handle form submissions
+#e.g. params[:choice] reads as null in json
+#good question for Matt / Tanner
+  author_id = params["author_id"].to_i
+  correct_name = User.find(author_id).name
+  choice = params["choice"].to_i
+  if author_id == choice
+    message = "Correct! You know your cohort well :-)"
   else
-    @message = "Wrong! I suppose you need to get more familiar with #{right}"
+    message = "Wrong! I suppose you need to get more familiar with #{correct_name}"
   end
-  {message: @message}.to_json
+  "#{message}"
+end
+
+get '/play/guess/:user_id' do
+  "TEST"
 end
 
 

@@ -1,12 +1,14 @@
 
 <div class="container">
-
+<p class="hidden_answer"><%=@author.id%></p>
 <center>
 <div class="bubble">
 <%= @tweet.datetime %>
 <br>
 <%= @tweet.text %>
 </div>
+
+<h3 class="correct_answer"> </h3>
 
 <h3> How embarrassing is this tweet? </h3>
   <form action="/play/rate/<%=@tweet.id%>" method="POST">
