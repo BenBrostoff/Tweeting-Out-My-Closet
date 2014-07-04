@@ -9,12 +9,15 @@
 </div>
 
 <h3> How embarrassing is this tweet? </h3>
-<input type="range"  min="0" max="100" value="50"/>
-</h3>
+  <form action="/play/rate/<%=@tweet.id%>" method="POST">
+  <input type="range"  min="0" max="100" value="50" name="votes">
+  <br>
+  <input type="submit" value="Rate this Tweet!">
+</form>
 
 <h3> Who do you think tweeted this gem? </h3>
 <div id="shuffle">
-<form action="" >
+<form action="/play/rate" method="POST">
 <table style="width: 75%">
 <ul>
 <tr>
