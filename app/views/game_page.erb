@@ -17,26 +17,28 @@
 
 <h3> Who do you think tweeted this gem? </h3>
 <div id="shuffle">
-<form action="/play/rate" method="POST">
 <table style="width: 75%">
-<ul>
-<tr>
-<td><li><input type="radio" value="<%= answer = User.find(@tweet.user_id) %>"><%=answer.name %></li></td>
-<td><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(answer.email)%>"></td>
-</tr>
+  <tr>
+    <form action="/play/guess/<%=@author.id%>" method="POST">
+    <td><input type="radio" name="choice" value="<%= @author.id %>" ><%=@author.name %></td>
+    <td><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(@author.email)%>"></td>
+  </tr>
 
 <% array = (1..User.last.id).to_a %>
 <% array = array.find_all{ |id| id != User.find(@tweet.user_id).id } %>
 
 <% 4.times do %>
- <tr>
- <td><li><input class="radio" type="radio" value="<%= answer = User.find(array.sample) %>"><%=answer.name %></li></td>
-  <td><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(answer.email)%>"></td>
- </tr>
-<% array = array.find_all{ |id| id != answer.id } %>
-<% end %>
-</ul>
+<tr>
+<td><input class="radio" name="choice" type="radio" value="<%= answer = User.find(array.sample).id %>" ><%=User.find(answer).name %></td>
+<td><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(User.find(answer).email)%>"></td>
+    <% array = array.find_all{ |id| id != answer } %>
+  </tr>
+  <% end %>
+  <input type="submit" value="Guess who!">
+
+
 </form>
+</table>
 </div>
 </center>
 </div>
