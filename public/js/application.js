@@ -16,17 +16,21 @@ $.fn.randomize = function(selector){
 $(document).ready(function() {
   $('#shuffle').randomize("li");
   var user_id = $("p:first").text()
+  $('.hidden_answer').hide()
 
   $("body").on('submit', function(e) {
     e.preventDefault();
     var ajaxRequest = $.ajax({
       url: 'play/guess/'+user_id+'',
       type: "POST",
-      data: $('form').serialize()
+      data: $('form').serialize(),
+      dataType: "json"
     });
     ajaxRequest.done(function(data) {
       // Putting src file path into empty src= in the img div in the view
-      console.log(data);
+      console.log("success");
+      $('.hidden_answer').show()
+      $("p:first").text(data.message).css("background-color", data.color).css("text-align", "center")
     });
     ajaxRequest.fail(function(response){
       console.log("Fail");

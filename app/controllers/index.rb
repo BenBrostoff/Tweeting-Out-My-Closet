@@ -40,10 +40,12 @@ post '/play/guess/:author_id' do
   choice = params["choice"].to_i
   if author_id == choice
     message = "Correct! You know your cohort well :-)"
+    color = "#00FF00"
   else
-    message = "Wrong! I suppose you need to get more familiar with #{correct_name}"
+    message = "Wrong! I suppose you need to get more familiar with #{correct_name}!"
+    color = "#F08080"
   end
-  "#{message}"
+  {message: "#{message}", color: color}.to_json
 end
 
 get '/play/guess/:user_id' do
