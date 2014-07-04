@@ -4,6 +4,7 @@ class CreateTweets < ActiveRecord::Migration
       t.belongs_to :user
       t.datetime :datetime
       t.text :text
+      t.integer :current_votes
 
       t.timestamps
     end
