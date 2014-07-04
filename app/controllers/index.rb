@@ -18,10 +18,12 @@ end
 
 post '/play/rate/:tweet_id' do  #change to /users/:id/play/rate #AJAX
   @tweet = Tweet.find(params[:tweet_id])
-  @tweet.update(current_votes: 0)
+  #@tweet.update(current_votes: 0)
   @tweet.upvote(params[:votes].to_i)
+
+  #Vote.create()
   erb :game_page
-  # #{}.to_json
+  #{}.to_json
 end
 
 post '/game/:tweet_id/votes/:vote_id' do #votes are created in this handler
