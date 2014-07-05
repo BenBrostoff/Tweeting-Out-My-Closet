@@ -1,10 +1,16 @@
 <div class="container">
+  <div class="left_user_page">
   <h2> What Other People Find Most Embarrassing About You: </h2>
   <% @tweets.each do |tweet| %>
-      <div class="bubble">
+      <div class="bubble" id="red">
       <%= tweet.datetime %>
       <br>
       <%= tweet.text %>
+      <br>
+      <%= User.find(tweet.user_id).name %>
+      <br>
+      <% email = User.find(tweet.user_id).email %>
+      <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
       <br>
       <%= "Total User Votes: " + "#{tweet.user_votes}" %>
       <br>
@@ -13,12 +19,10 @@
       <br>
     </div>
   <% end %>
-  <center>
-    <button><a href='/play'> PLAY NOW! </a>
-  </center>
+  </div>
 
+  <div class="right_user_page">
   <h2> What You Find Most Embarrassing About Other People: </h2>
-
    <% @my_voted_tweets.each do |tweet| %>
       <div class="bubble">
       <%= tweet.datetime %>
@@ -35,9 +39,6 @@
       <br>
       </div>
   <% end %>
-
   </div>
-
-
-
+  </div>
 </div>

@@ -1,3 +1,17 @@
+#red{
+  background-color: red;
+}
+
+.left_user_page {
+  float: left;
+  width: 50%;
+}
+
+.right_user_page {
+  float: right;
+  width: 50%;
+}
+
 .left_nav li {
   margin-top: 20px;
   display: inline;
@@ -76,7 +90,7 @@ input[type="submit"] {
 
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }

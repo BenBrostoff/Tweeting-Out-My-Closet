@@ -22,7 +22,7 @@ get '/users/:id' do#all your tweets and how many votes you have
   @tweets = @tweets.find_all{ |tweet| tweet.user_id == current_user.id }
   #only tweets that are mine and tweets that got votes
 
-  @my_votes = Vote.where(user_id: current_user.id).order("current_votes DESC")
+  @my_votes = Vote.where(user_id: current_user.id).order("current_votes DESC").take(5)
   @my_voted_tweets = []
   @my_votes.each do |vote|
     @my_voted_tweets << Tweet.find(vote.tweet_id)
