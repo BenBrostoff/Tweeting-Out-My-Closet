@@ -1,3 +1,32 @@
+.left_nav li {
+  margin-top: 20px;
+  display: inline;
+  float: left;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.right_nav li {
+  margin-top: 20px;
+  display: inline;
+  float: right;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.left_nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.right_nav a {
+  margin-right: 30px;
+  text-decoration: none;
+  color: white;
+}
+
 table {
   margin-left: 0px;
 }
@@ -40,7 +69,7 @@ th {
 }
 
 nav {
-  height: 175px;
+  height: 75px;
   background-color: #00008B;
   color: white;
 }

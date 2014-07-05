@@ -5,10 +5,10 @@ post '/users/signin' do
   if @user
     session[:user_id] = @user.id
     p session[:user_id]
-    redirect "/users/#{@user.id}"
+    redirect "/"
   else
     @invalid_login = true
-    erb :index
+    erb :login
   end
 end
 

@@ -20,15 +20,20 @@
 </head>
 <body>
   <nav>
-  <br>
-  <a class="title" href="/"> Tweeting Out My Closet </a>
+   <ul class="left_nav">
+   <li><a class="title" href="/"> Tweeting Out My Closet </a></li>
+  </ul>
+
+
+<ul class="right_nav">
   <% if logged_in? %>
-  You are logged in as <%= current_user.name %>
-  <br>
-   <a class="user_info" href="/users/<%=current_user.id%>">My Closet</a>
-   <br>
-   <a class="user_info" href="/signout">Sign Out</a>
+   <li><a class="user_info" href="/users/<%=current_user.id%>">My Closet</a></li>
+   <li><a class="user_info" href="/signout">Sign Out</a><li>
+   <li><a class="user_info" href="/users/<%=current_user.id%>"><%=current_user.name%></a><li>
+  <% else %>
+    <li><a href="/login">login</a></li>
   <% end %>
+</ul>
   </nav>
   <%= yield %>
 </body>
