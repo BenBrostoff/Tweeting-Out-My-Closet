@@ -1,8 +1,6 @@
 
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
+// randomize radio buttons
 $.fn.randomize = function(selector){
     (selector ? this.find(selector) : this).parent().each(function(){
         $(this).children(selector).sort(function(){
@@ -15,11 +13,34 @@ $.fn.randomize = function(selector){
 
 $(document).ready(function() {
   $('#shuffle').randomize("li");
-  var user_id = $("p:first").text()
   var tweet_id = $("p:first").text()
+  var user_id = $("p.hidden_answer:first").text()
+  $('.hidden_vote').hide()
   $('.hidden_answer').hide()
 
-  $(".second_button").on('click', function(e) {
+  //functionality for voting
+  $(".first_button").on('click', function(e) {
+    e.preventDefault();
+    var ajaxRequest = $.ajax({
+      url: 'play/vote/'+tweet_id+'',
+      type: "POST",
+      data: $('form').serialize(),
+    });
+    ajaxRequest.done(function(data) {
+      console.log("YAY");
+      console.log(tweet_id);
+      console.log(user_id);
+      console.log("TEST");
+      $("p:first").text(data).css("background-color", "green").css("text-align", "center")
+      $('.hidden_vote').show()
+    });
+    ajaxRequest.fail(function(response){
+      console.log("Fail");
+    });
+  });
+
+    // functionality for guessing tweet
+    $(".second_button").on('click', function(e) {
     e.preventDefault();
     var ajaxRequest = $.ajax({
       url: 'play/guess/'+user_id+'',
@@ -28,31 +49,10 @@ $(document).ready(function() {
       dataType: "json"
     });
     ajaxRequest.done(function(data) {
-      // Putting src file path into empty src= in the img div in the view
       console.log("success");
+      console.log(tweet_id);
       $('.hidden_answer').show()
-      $("p:first").text(data.message).css("background-color", data.color).css("text-align", "center")
-    });
-    ajaxRequest.fail(function(response){
-      console.log("Fail");
-    });
-  });
-
-
-
-  $(".first_button").on('click', function(e) {
-    e.preventDefault();
-    var ajaxRequest = $.ajax({
-      url: 'play/vote/'+tweet_id+'',
-      type: "POST",
-      data: $('form').serialize(),
-      dataType: "json"
-    });
-    ajaxRequest.done(function(data) {
-      // Putting src file path into empty src= in the img div in the view
-      console.log("success");
-      $('.hidden_answer').show()
-      $("p:second").text(data).css("background-color", "green").css("text-align", "center")
+      $('p.hidden_answer:first').text(data.message).css("background-color", data.color).css("text-align", "center")
     });
     ajaxRequest.fail(function(response){
       console.log("Fail");
