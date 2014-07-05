@@ -11,7 +11,7 @@
 
 <h3> How embarrassing is this tweet? </h3>
   <form action="/play/rate/<%=@tweet.id%>" method="POST">
-  <input type="range"  min="0" max="100" value="50" name="votes">
+  <input type="range"  min="0" max="100" value="50" name="current_votes">
   <br>
   <input type="submit" value="Rate this Tweet!">
 </form>

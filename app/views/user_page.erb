@@ -1,5 +1,19 @@
 <div class="container">
   <h2> Your Top Tweets: </h2>
+  <% current_user.tweets.each do |tweet| %>
+    <% if Vote.where(tweet_id: tweet.id).size != 0%>
+      <%= tweet.datetime %>
+      <br>
+      <%= tweet.text %>
+      <br>
+      <br>
+      <% sum = 0 %>
+      <% Vote.where(tweet_id: tweet.id).each {|vote|  sum += vote.current_votes } %>
+      <%= "Total Votes: " + "#{sum}" %>
+      <br>
+      <%= "Embarrassment Rating: " + (sum / Vote.where(tweet_id: tweet.id).size).to_s %>
+    <% end %>
+  <% end %>
   <center>
     <button><a href='/play'> PLAY NOW! </a>
   </center>

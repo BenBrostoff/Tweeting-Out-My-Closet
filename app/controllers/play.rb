@@ -1,26 +1,18 @@
-get '/play' do
+get '/play' do #initiate game
   tweet_number = Tweet.all.size
   @tweet = Tweet.find(rand(tweet_number) + 1) #random tweet
   @author = User.find(@tweet.user_id)
   erb :game_page
 end
 
-post '/play/rate/:tweet_id' do  #change to /users/:id/play/rate #AJAX
-  @tweet = Tweet.find(params[:tweet_id])
-  #@tweet.update(current_votes: 0)
-  @tweet.upvote(params[:votes].to_i)
-
-  #Vote.create()
-  erb :game_page
-  #{}.to_json
-end
-
 post '/play/:tweet_id/vote' do #votes are created in this handler
-
-
+  #vote_count = params["current_votes"]
+  #Vote.first_or_create(user_id: current_user.id, tweet_id: params["tweet_id"]
+              #current_votes: vote_count)
+  #{}"On the embarrassment scale, you rated this tweet a #{vote_count} out of 100!"
 end
 
-post '/play/guess/:author_id' do
+post '/play/guess/:author_id' do #guesses are handled
   author_id = params["author_id"].to_i
   correct_name = User.find(author_id).name
   choice = params["choice"].to_i
@@ -34,6 +26,3 @@ post '/play/guess/:author_id' do
   {message: "#{message}", color: color}.to_json
 end
 
-get '/play/guess/:user_id' do
-  "TEST"
-end
