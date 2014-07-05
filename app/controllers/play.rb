@@ -31,9 +31,11 @@ post '/play/guess/:author_id' do #guesses are handled
   if author_id == choice
     message = "Correct! You know your cohort well :-)"
     color = "#00FF00"
+    current_user.update(score: current_user.score += 1)
   else
     message = "Wrong! I suppose you need to get more familiar with #{correct_name}!"
     color = "#F08080"
+    current_user.update(score: current_user.score -= 1)
   end
   {message: "#{message}", color: color}.to_json
 end

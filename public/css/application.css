@@ -1,3 +1,13 @@
+.high_scores{
+  float: left;
+  width: 30%;
+}
+
+.tweets {
+  float: right;
+  width: 70%;
+}
+
 #red{
   background-color: red;
 }

@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :handle
+      t.integer :score, default: 0
 
       t.timestamps
     end
