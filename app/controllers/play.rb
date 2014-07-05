@@ -9,6 +9,13 @@ post '/play/vote/:tweet_id' do #votes are created / updated in this handler
   vote_count = params["current_votes"]
   vote = Vote.create(user_id: current_user.id, tweet_id: params["tweet_id"])
   vote.update(current_votes: vote_count)
+
+  tweet_id = params["tweet_id"].to_i
+  tweet = Tweet.find(tweet_id)
+  tweet.update(user_votes: tweet.user_votes + 1)#tweet.get_current_votes
+  tweet.update(total_votes: tweet.total_votes + params["current_votes"].to_i)
+  tweet.update(average_votes: tweet.total_votes / tweet.user_votes)
+
   "On the embarrassment scale, you rated this tweet a #{vote_count} out of 100!"
 end
 

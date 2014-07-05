@@ -1,8 +1,5 @@
 get '/' do #this should be a log-in screen
-  @tweets = []
-  Vote.all.each do |vote|
-    @tweets << Tweet.find(vote.tweet_id) #only tweets that were voted on
-  end
+  @tweets = Tweet.all.order("average_votes DESC").take(20)
   erb :index
 end
 

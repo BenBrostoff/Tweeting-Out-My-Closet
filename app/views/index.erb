@@ -3,6 +3,7 @@
 
   <% if logged_in? %>
     <% @tweets.each do |tweet| %>
+    <% if tweet.user_votes > 0 %>
       <div class="bubble">
       <%= tweet.datetime %>
       <br>
@@ -13,15 +14,15 @@
       <% email = User.find(tweet.user_id).email %>
       <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
       <br>
-      <% user_votes = Vote.where(tweet_id: tweet.id).size %>
-      <%= "Total User Votes: " + "#{user_votes}" %>
-      <% sum = 0 %>
-      <% Vote.where(tweet_id: tweet.id).each {|vote|  sum += vote.current_votes } %>
+      <%= "Total User Votes: " + "#{tweet.user_votes}" %>
       <br>
-      <%= "Embarrassment Rating: " + (sum / Vote.where(tweet_id: tweet.id).size).to_s %>
+      <% if tweet.user_votes != 0 %>
+        <%= "Embarrassment Rating: " + "#{tweet.average_votes}"%>
+      <% end %>
       <br>
       <br>
     </div>
+    <% end %>
     <% end %>
   <% end %>
  </div>
