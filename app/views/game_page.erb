@@ -1,6 +1,5 @@
 
 <div class="container">
-<p class="hidden_answer"><%=@author.id%></p>
 <center>
 <div class="bubble">
 <%= @tweet.datetime %>
@@ -18,6 +17,7 @@
 </form>
 
 <h3> Who do you think tweeted this gem? </h3>
+<p class="hidden_answer"><%=@author.id%></p>
 <div id="shuffle">
 <table style="width: 75%">
   <tr>
@@ -36,11 +36,16 @@
     <% array = array.find_all{ |id| id != answer } %>
   </tr>
   <% end %>
-  <input type="submit" value="Guess who!">
 
 
-</form>
 </table>
+<button type="button" class="second_button">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Guess who!
+<input type="submit">
+</button>
+</form>
 </div>
+<br>
+<button><a href="/play"> NEXT! </a> </button>
 </center>
 </div>

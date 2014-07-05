@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -23,8 +23,10 @@
   <br>
   <a class="title" href="/"> Tweeting Out My Closet </a>
   <% if logged_in? %>
-   <a class="user_info" href="/">My Closet</a>
-   <a class="user_info" href="/">Sign Out</a>
+   <p class="log_info"> You are logged in as <%= current_user.name %> </p>
+   <a class="user_info" href="/users/<%=current_user.id%>">My Closet</a>
+   <br>
+   <a class="user_info" href="/signout">Sign Out</a>
   <% end %>
   </nav>
   <%= yield %>

@@ -1,5 +1,31 @@
+table {
+  margin-left: 0px;
+}
+
+td {
+  padding: 1px 1px 1px 1px;
+}
+
 body {
   font-family:'Prata', serif;
+}
+
+button {
+  text-align: center;
+}
+
+input[type="submit"] {
+    visibility: hidden;
+    background-color: buttonface;
+    border: 2px outset buttonface;
+    color: buttontext;
+    cursor: default;
+    font: -moz-button;
+    line-height: normal;
+    padding: 0 6px;
+    text-align: center;
+    text-shadow: none;
+    white-space: pre;
 }
 
 .container {
@@ -14,7 +40,7 @@ th {
 }
 
 nav {
-  height: 60px;
+  height: 175px;
   background-color: #00008B;
   color: white;
 }
@@ -23,28 +49,28 @@ nav {
   color: white;
   font-size: 20px;
   text-decoration: none;
-  padding-top: 35%;
 }
 
 
 .bubble {
   position: relative;
   background-color: #1E90FF;
+  font-size: 23px;
   color: white;
   margin: 0;
   padding:10px;
   text-align:center;
-  width:75%;
+  width:85%;
   -moz-border-radius:10px;
   -webkit-border-radius:10px;
   -webkit-box-shadow: 0px 0 3px rgba(0,0,0,0.25);
   -moz-box-shadow: 0px 0 3px rgba(0,0,0,0.25);
-  box-shadow: 0px 0 3px rgba(0,0,0,0.25); 
+  box-shadow: 0px 0 3px rgba(0,0,0,0.25);
 }
 .bubble:after {
   position: absolute;
   display: block;
-  content: "";  
+  content: "";
   border-color: #eee transparent transparent transparent;
   border-style: solid;
   border-width: 10px;
@@ -54,3 +80,18 @@ nav {
   bottom:-19px;
   left:1em;
 }
+
+.user_info {
+  font-size: 20px;
+  color: white;
+  text-decoration: none
+}
+
+.log_info{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+
+
