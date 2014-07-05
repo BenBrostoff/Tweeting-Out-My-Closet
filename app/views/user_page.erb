@@ -3,7 +3,8 @@
   <h2> What Other People Find Most Embarrassing About You: </h2>
   <% @tweets.each do |tweet| %>
       <div class="bubble" id="red">
-      <%= tweet.datetime %>
+      <%= date_format(tweet.datetime) %>
+      <%= datetime_am_pm(tweet.datetime) %>
       <br>
       <%= tweet.text %>
       <br>
@@ -25,7 +26,8 @@
   <h2> What You Find Most Embarrassing About Other People: </h2>
    <% @my_voted_tweets.each do |tweet| %>
       <div class="bubble">
-      <%= tweet.datetime %>
+      <%= date_format(tweet.datetime) %>
+      <%= datetime_am_pm(tweet.datetime) %>
       <br>
       <%= tweet.text %>
       <br>

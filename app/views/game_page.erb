@@ -2,7 +2,8 @@
 <div class="container">
 <center>
 <div class="bubble">
-<%= @tweet.datetime %>
+<%= date_format(@tweet.datetime) + " "%>
+<%= datetime_am_pm(@tweet.datetime) %>
 <br>
 <%= @tweet.text %>
 </div>

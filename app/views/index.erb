@@ -3,7 +3,8 @@
 
     <% @tweets.each do |tweet| %>
       <div class="bubble">
-      <%= tweet.datetime %>
+      <%= date_format(tweet.datetime) + " " %>
+      <%= datetime_am_pm(tweet.datetime) + " " %>
       <br>
       <%= tweet.text %>
       <br>
