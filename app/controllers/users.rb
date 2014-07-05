@@ -12,7 +12,10 @@ post '/users/signin' do
   end
 end
 
-get '/users/:id' do#all your tweets and how many votes you have
+get '/users/:id' do #all your tweets and how many votes you have
+  if current_user.id == params["id"].to_i
+    @logged_in = true
+  end
   @tweets = []
   @vote_array = []
   Vote.where(user_id: current_user.id).each do |vote|
@@ -29,6 +32,22 @@ get '/users/:id' do#all your tweets and how many votes you have
   end
 
   erb :user_page
+end
+
+get '/users/change_password/:user_id' do #to change password
+  erb :"change_password"
+end
+
+put '/users/change_password' do #submit password
+  first = params["password_1"]
+  second = params["password_2"]
+  if first == second
+    current_user.update(password: first)
+    session[:message] = "Password successfully changed."
+    redirect '/'
+  end
+  @messages = "Invalid password confirmation."
+  erb :"change_password"
 end
 
 get '/signout' do#all your tweets and how many votes you have
