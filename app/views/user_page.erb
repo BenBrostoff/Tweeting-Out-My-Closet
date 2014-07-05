@@ -1,22 +1,26 @@
 <div class="container">
   <h2> Your Tweet Closet: </h2>
-  <% current_user.tweets.each do |tweet| %>
-    <% if Vote.where(tweet_id: tweet.id).size != 0%>
-      <div class="bubble">
-      <%= tweet.datetime %>
-      <br>
-      <%= tweet.text %>
-      <br>
-      <br>
-      <% user_votes = Vote.where(tweet_id: tweet.id).size %>
-      <%= "Total User Votes: " + "#{user_votes}" %>
-      <% sum = 0 %>
-      <% Vote.where(tweet_id: tweet.id).each {|vote|  sum += vote.current_votes } %>
-      <br>
-      <%= "Embarrassment Rating: " + (sum / Vote.where(tweet_id: tweet.id).size).to_s %>
-      <br>
-      <br>
-      </div>
+  <% if @vote_array.size != 0 %>
+    <% @vote_array.each do |vote_count| %>
+      <% @tweets.each do |tweet| %>
+        <% if vote_count == Vote.find_by(tweet_id: tweet.id, user_id: current_user.id).current_votes %>
+          <div class="bubble">
+          <%= tweet.datetime %>
+          <br>
+          <%= tweet.text %>
+          <br>
+          <br>
+          <% user_votes = Vote.where(tweet_id: tweet.id).size %>
+          <%= "Total User Votes: " + "#{user_votes}" %>
+          <% sum = 0 %>
+          <% Vote.where(tweet_id: tweet.id).each {|vote|  sum += vote.current_votes } %>
+          <br>
+          <%= "Embarrassment Rating: " + (sum / Vote.where(tweet_id: tweet.id).size).to_s %>
+          <br>
+          <br>
+        </div>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
   <center>
