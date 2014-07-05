@@ -7,7 +7,7 @@ end
 
 post '/play/vote/:tweet_id' do #votes are created / updated in this handler
   vote_count = params["current_votes"]
-  vote = Vote.first_or_create(user_id: current_user.id, tweet_id: params["tweet_id"])
+  vote = Vote.create(user_id: current_user.id, tweet_id: params["tweet_id"])
   vote.update(current_votes: vote_count)
   "On the embarrassment scale, you rated this tweet a #{vote_count} out of 100!"
 end
