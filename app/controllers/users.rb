@@ -17,20 +17,18 @@ get '/users/:id' do #all your tweets and how many votes you have
     @logged_in = true
   end
   @tweets = []
-  @vote_array = []
-  Vote.where(user_id: current_user.id).each do |vote|
-    @vote_array << vote.current_votes #gives array of all votes
+  Vote.where(user_id: params["id"]).each do |vote|
     @tweets << Tweet.find(vote.tweet_id) #only tweets that were voted on
   end
-  @tweets = @tweets.find_all{ |tweet| tweet.user_id == current_user.id }
+  @tweets = @tweets.find_all{ |tweet| tweet.user_id == params["id"].to_i }
   #only tweets that are mine and tweets that got votes
 
-  @my_votes = Vote.where(user_id: current_user.id).order("current_votes DESC").take(5)
+  @my_votes = Vote.where(user_id: params["id"]).order("current_votes DESC").take(5)
   @my_voted_tweets = []
   @my_votes.each do |vote|
     @my_voted_tweets << Tweet.find(vote.tweet_id)
   end
-
+  @this_user = User.find(params["id"])
   erb :user_page
 end
 

@@ -30,6 +30,7 @@
     <form action="/play/guess/<%=@author.id%>" method="POST">
     <td><input type="radio" name="choice" value="<%= @author.id %>" ><%=@author.name %></td>
     <td><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(@author.email)%>"></td>
+    <td><a href="users/<%=@author.id%>"> See <%=@author.name%> 's closet! </a></td>
   </tr>
 
 <% array = (1..User.last.id).to_a %>
@@ -39,6 +40,7 @@
 <tr>
 <td><input class="radio" name="choice" type="radio" value="<%= answer = User.find(array.sample).id %>" ><%=User.find(answer).name %></td>
 <td><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(User.find(answer).email)%>"></td>
+<td><a href="users/<%=answer%>"> See <%=User.find(answer).name%> 's closet! </a></td>
     <% array = array.find_all{ |id| id != answer } %>
   </tr>
   <% end %>

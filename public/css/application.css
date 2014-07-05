@@ -1,3 +1,7 @@
+body {
+ /* background-image: url("http://www.chicagolandcustomclosets.com/wp-content/uploads/Maple-Reach-in2.jpg");*/
+}
+
 .password_button{
   margin-left: 32%;
 }
@@ -107,6 +111,7 @@ input[type="submit"] {
   width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
+  opacity: 1;
 }
 
 th {
