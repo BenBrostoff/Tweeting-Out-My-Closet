@@ -51,8 +51,8 @@ $(document).ready(function() {
     ajaxRequest.done(function(data) {
       console.log("success");
       console.log(tweet_id);
-      $('.hidden_answer').show()
       $('p.hidden_answer:first').text(data.message).css("background-color", data.color).css("text-align", "center")
+      $('.hidden_answer').show()
     });
     ajaxRequest.fail(function(response){
       console.log("Fail");

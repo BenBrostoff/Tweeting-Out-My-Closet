@@ -30,9 +30,8 @@
 
 <ul class="right_nav">
   <% if logged_in? %>
-   <li><a class="user_info" href="/users/<%=current_user.id%>">My Closet</a></li>
    <li><a class="user_info" href="/signout">Sign Out</a><li>
-   <li><a class="user_info" href="/users/<%=current_user.id%>"><%=current_user.name%></a><li>
+   <li><a class="user_info" href="/users/<%=current_user.id%>"><%=current_user.name%>'s Closet</a></li>
   <% else %>
     <li><a href="/login">login</a></li>
   <% end %>

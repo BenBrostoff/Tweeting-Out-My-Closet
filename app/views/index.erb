@@ -1,9 +1,7 @@
 <div class="container">
   <h1>Tweeting Out My Closet</h1>
 
-  <% if logged_in? %>
     <% @tweets.each do |tweet| %>
-    <% if tweet.user_votes > 0 %>
       <div class="bubble">
       <%= tweet.datetime %>
       <br>
@@ -23,7 +21,5 @@
       <br>
     </div>
     <% end %>
-    <% end %>
-  <% end %>
  </div>
 

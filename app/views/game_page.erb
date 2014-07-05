@@ -11,6 +11,7 @@
 
 <h3> How embarrassing is this tweet? </h3>
 <p class="hidden_vote"><%=@tweet.id%></p>
+<p class="hidden_vote">Share the embarrassment with your friends through this link: </p>
   <form action="/play/vote/<%=@tweet.id%>" method="POST">
   <input type="range"  min="0" max="100" value="50" name="current_votes">
   <br>

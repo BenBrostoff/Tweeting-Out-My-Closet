@@ -1,29 +1,43 @@
 <div class="container">
-  <h2> Your Tweet Closet: </h2>
-  <% if @vote_array.size != 0 %>
-    <% @vote_array.each do |vote_count| %>
-      <% @tweets.each do |tweet| %>
-        <% if vote_count == Vote.find_by(tweet_id: tweet.id, user_id: current_user.id).current_votes %>
-          <div class="bubble">
-          <%= tweet.datetime %>
-          <br>
-          <%= tweet.text %>
-          <br>
-          <br>
-          <% user_votes = Vote.where(tweet_id: tweet.id).size %>
-          <%= "Total User Votes: " + "#{user_votes}" %>
-          <% sum = 0 %>
-          <% Vote.where(tweet_id: tweet.id).each {|vote|  sum += vote.current_votes } %>
-          <br>
-          <%= "Embarrassment Rating: " + (sum / Vote.where(tweet_id: tweet.id).size).to_s %>
-          <br>
-          <br>
-        </div>
-        <% end %>
-      <% end %>
-    <% end %>
+  <h2> What Other People Find Most Embarrassing About You: </h2>
+  <% @tweets.each do |tweet| %>
+      <div class="bubble">
+      <%= tweet.datetime %>
+      <br>
+      <%= tweet.text %>
+      <br>
+      <%= "Total User Votes: " + "#{tweet.user_votes}" %>
+      <br>
+      <%= "Embarrassment Rating: " + "#{tweet.average_votes}" %>
+      <br>
+      <br>
+    </div>
   <% end %>
   <center>
     <button><a href='/play'> PLAY NOW! </a>
   </center>
+
+  <h2> What You Find Most Embarrassing About Other People: </h2>
+
+   <% @my_voted_tweets.each do |tweet| %>
+      <div class="bubble">
+      <%= tweet.datetime %>
+      <br>
+      <%= tweet.text %>
+      <br>
+      <%= User.find(tweet.user_id).name %>
+      <br>
+      <% email = User.find(tweet.user_id).email %>
+      <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
+      <br>
+      <%= "Your Embarrassment Rating: " + "#{Vote.find_by(user_id: current_user.id, tweet_id: tweet.id).current_votes}" %>
+      <br>
+      <br>
+      </div>
+  <% end %>
+
+  </div>
+
+
+
 </div>
