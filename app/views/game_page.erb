@@ -13,11 +13,14 @@
   <form action="/play/rate/<%=@tweet.id%>" method="POST">
   <input type="range"  min="0" max="100" value="50" name="current_votes">
   <br>
-  <input type="submit" value="Rate this Tweet!">
+  <button type="button" class="first_button">  ""
+  <input type="submit">
+  </button>
 </form>
 
 <h3> Who do you think tweeted this gem? </h3>
 <p class="hidden_answer"><%=@author.id%></p>
+<p class="hidden_answer"><%=@tweet.id%></p>
 <div id="shuffle">
 <table style="width: 75%">
   <tr>

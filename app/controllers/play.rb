@@ -5,11 +5,11 @@ get '/play' do #initiate game
   erb :game_page
 end
 
-post '/play/:tweet_id/vote' do #votes are created in this handler
-  #vote_count = params["current_votes"]
-  #Vote.first_or_create(user_id: current_user.id, tweet_id: params["tweet_id"]
-              #current_votes: vote_count)
-  #{}"On the embarrassment scale, you rated this tweet a #{vote_count} out of 100!"
+post '/play/vote/:tweet_id' do #votes are created in this handler
+  vote_count = params["current_votes"]
+  Vote.first_or_create(user_id: current_user.id, tweet_id: params["tweet_id"],
+              current_votes: vote_count)
+  "On the embarrassment scale, you rated this tweet a #{vote_count} out of 100!"
 end
 
 post '/play/guess/:author_id' do #guesses are handled
