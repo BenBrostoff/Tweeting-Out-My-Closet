@@ -27,10 +27,7 @@ $(document).ready(function() {
       data: $('form').serialize(),
     });
     ajaxRequest.done(function(data) {
-      console.log("YAY");
-      console.log(tweet_id);
-      console.log(user_id);
-      console.log("TEST");
+      console.log("success");
       $("p:first").text(data).css("background-color", "green").css("text-align", "center")
       $('.hidden_vote').show()
     });
