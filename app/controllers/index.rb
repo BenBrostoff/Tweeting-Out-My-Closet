@@ -8,6 +8,11 @@ get '/login' do
   erb :login
 end
 
-
+post '/search' do
+  search_term = params[:search]
+  @tweets = Tweet.where("text like?", "%#{search_term}%") 
+  @message = "Returning everything in the closet that includes #{search_term}"
+  erb :search
+end
 
 
