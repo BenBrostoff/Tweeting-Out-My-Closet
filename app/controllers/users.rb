@@ -16,8 +16,9 @@ get '/users/:id' do #all your tweets and how many votes you have
   if current_user.id == params["id"].to_i
     @logged_in = true
   end
-  @tweets = Tweet.where(user_id: params["id"].to_i).order("average_votes DESC").order("user_votes DESC").take(5)
-  #only tweets that are users
+  @tweets = Tweet.where(user_id: params["id"].to_i).where.not(user_votes: 0).
+            order("average_votes DESC").order("user_votes DESC").take(5)
+  #only tweets that are users and have been voted on once
 
   @my_votes = Vote.where(user_id: params["id"]).order("current_votes DESC").take(5)
   @my_voted_tweets = []

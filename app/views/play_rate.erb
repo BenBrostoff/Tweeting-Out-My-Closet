@@ -7,8 +7,8 @@
     <br>
     <%= User.find(@tweet.user_id).name %>
     <br>
-    <% email = User.find(@tweet.user_id).email %>
-    <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
+    <% user = User.find(@tweet.user_id) %>
+    <a href="/users/<%=user.id%>"><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>"></a> 
     <br>
     <%= "Total User Votes: " + "#{@tweet.user_votes}" %>
     <br>
@@ -20,7 +20,7 @@
       <input type="range"  min="0" max="100" value="50" name="current_votes">
       <br>
       <button type="button" class="first_button">
-      Rate this tweet!
+      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Rate this tweet!
       <input type="submit">
       </button>
   </form>

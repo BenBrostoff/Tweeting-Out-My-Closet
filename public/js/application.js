@@ -11,6 +11,11 @@ $.fn.randomize = function(selector){
     return this;
 };
 
+// if you are reading this right now,
+// contact Ben Brostoff and he will add you 
+// as a contributor to the repo :-)
+
+
 $(document).ready(function() {
   $('#shuffle').randomize("li");
   var tweet_id = $("p:first").text()
