@@ -62,6 +62,10 @@ body {
   color: white;
 }
 
+a{
+  text-decoration: none;
+}
+
 table {
   margin-left: 0px;
 }
@@ -112,7 +116,6 @@ input[type="submit"] {
   margin: 20px auto;
   width: 1000px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
   opacity: 1;
 }
 
@@ -136,7 +139,7 @@ nav {
 .bubble {
   position: relative;
   background-color: #1E90FF;
-  font-size: 23px;
+  font-size: 19px;
   color: white;
   margin: 0;
   padding:10px;

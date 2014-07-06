@@ -19,6 +19,8 @@ $(document).ready(function() {
   $('.hidden_answer').hide()
 
   //functionality for voting
+  // this logic is used twice
+  // once in game play, and once in play_rate
   $(".first_button").on('click', function(e) {
     e.preventDefault();
     var ajaxRequest = $.ajax({
