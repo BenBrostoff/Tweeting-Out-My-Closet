@@ -30,7 +30,7 @@ $(document).ready(function() {
     });
     ajaxRequest.done(function(data) {
       console.log("success");
-      $("p:first").text(data).css("background-color", "green").css("text-align", "center")
+      $("p:first").text(data).css("background-color", "#00FF00").css("text-align", "center")
       $('.hidden_vote').show()
     });
     ajaxRequest.fail(function(response){
