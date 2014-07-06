@@ -42,10 +42,12 @@ h2 {
 
 .password_button{
   margin-left: 32%;
+  width: 150px;
 }
 
-.search_button{
-  margin-left: 32%;
+#search_bar{
+  margin-left: 0%;
+  text-align: left;
 }
 
 

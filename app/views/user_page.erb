@@ -47,7 +47,9 @@
       <% user = User.find(tweet.user_id) %>
       <a href="/users/<%=user.id%>"><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>"></a>
       <br>
+      <br>
       <%= "#{@this_user.name}'s Embarrassment Rating: " + "#{Vote.find_by(user_id: @this_user.id, tweet_id: tweet.id).current_votes}" %>
+      <br>
       <br>
       <button><a href="/play/rate/<%=tweet.id%>"> Rate this tweet! </a></button>
       <br>
