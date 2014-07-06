@@ -3,15 +3,23 @@ get '/play' do #initiate game
   @tweet = Tweet.find(rand(tweet_number) + 1) #random tweet
   @author = User.find(@tweet.user_id)
   @has_voted = ""
-  # if Vote.where(user_id: current_user.id, tweet_id: params["tweet_id"]) == 1
-  #   @has_voted = "You already voted for this tweet! (#{}"
-  # end
+  if Vote.where(user_id: current_user.id, tweet_id: @tweet.id).size == 1
+    vote = Vote.find_by(user_id: current_user.id, tweet_id: @tweet.id)
+    @has_voted = true
+    @message = "You already voted for this tweet and gave it a #{vote.current_votes} out of 100!"
+  end
   erb :game_page
 end
 
 get '/play/rate/:tweet_id' do
   @tweet = Tweet.find(params[:tweet_id])
   @author = User.find(@tweet.user_id)
+  if Vote.where(user_id: current_user.id, tweet_id: @tweet.id).size == 1
+    vote = Vote.find_by(user_id: current_user.id, tweet_id: @tweet.id)
+    @has_voted = true
+    @message = "You already voted for this tweet and gave it a #{vote.current_votes} out of 100!"
+  end
+  @test = Vote.where(user_id: current_user.id, tweet_id: @tweet.id).size
   erb :play_rate
 end
 

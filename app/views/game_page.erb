@@ -10,16 +10,21 @@
 
 <h3 class="correct_answer"> </h3>
 
-<h3> How embarrassing is this tweet? </h3>
-<p class="hidden_vote"><%=@tweet.id%></p>
-  <form action="/play/vote/<%=@tweet.id%>" method="POST">
-  <input type="range"  min="0" max="100" value="50" name="current_votes">
-  <br>
-  <button type="button" class="first_button">
-  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Rate this tweet!
-  <input type="submit">
-  </button>
-</form>
+<% if @has_voted != true %>
+  <h3> How embarrassing is this tweet? </h3>
+  <p class="hidden_vote"><%=@tweet.id%></p>
+    <form action="/play/vote/<%=@tweet.id%>" method="POST">
+    <input type="range"  min="0" max="100" value="50" name="current_votes">
+    <br>
+    <button type="button" class="first_button">
+    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Rate this tweet!
+    <input type="submit">
+    </button>
+  </form>
+<%else%>
+<%= @message %>
+<% end %>
+
 
 <h3> Who do you think tweeted this gem? </h3>
 <p class="hidden_answer"><%=@author.id%></p>

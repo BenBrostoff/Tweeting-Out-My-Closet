@@ -8,23 +8,25 @@
     <%= User.find(@tweet.user_id).name %>
     <br>
     <% user = User.find(@tweet.user_id) %>
-    <a href="/users/<%=user.id%>"><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>"></a> 
+    <a href="/users/<%=user.id%>"><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>"></a>
     <br>
     <%= "Total User Votes: " + "#{@tweet.user_votes}" %>
     <br>
     <%= "Embarrassment Rating: " + "#{@tweet.average_votes}" %>
     <br>
-    <p class="hidden_vote"><%=@tweet.id%></p>
-    <p class="hidden_vote">Share the embarrassment with your friends through this link: </p>
-    <form action="/play/vote/<%=@tweet.id%>" method="POST">
-      <input type="range"  min="0" max="100" value="50" name="current_votes">
-      <br>
-      <button type="button" class="first_button">
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Rate this tweet!
-      <input type="submit">
-      </button>
-  </form>
-
+    <% if !@has_voted %>
+      <p class="hidden_vote"><%=@tweet.id%></p>
+      <form action="/play/vote/<%=@tweet.id%>" method="POST">
+        <input type="range"  min="0" max="100" value="50" name="current_votes">
+        <br>
+        <button type="button" class="first_button">
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Rate this tweet!
+        <input type="submit">
+        </button>
+    </form>
+    <%else%>
+    <%= @message %>
+    <%end%>
     <br>
   </div>
   </div>
