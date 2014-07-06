@@ -1,4 +1,10 @@
 <div class="container">
+  <% if session[:message] %>
+    <p class="blue_confirm"><%= session[:message] %></p>
+    <% session[:message].clear %>
+  <br>
+  <br>
+  <% end %>
   <div class="left_user_page">
   <div class="user_title">
     <h2 id="top"> What Other People Find Most Embarrassing About <%=@this_user.name%> </h2>

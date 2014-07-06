@@ -24,6 +24,8 @@ ian = User.create(name: "Ian Shuff", email: "ianvshuff@gmail.com",
             handle: "shuff_bob_bomb", password: "test", password_confirmation: "test")
 richard = User.create(name: "Richard Macias", email: "rjny86@gmail.com",
             handle: "RJNY86", password: "test", password_confirmation: "test")
+greg = User.create(name: "Greg Knudsen", email: "greg.knudsen09@gmail.com",
+                   handle: "Greg99799", password: "test", password_confirmation: "test")
 
 def tweet_creator(handle, id)
   holder = []
@@ -45,6 +47,7 @@ tweet_creator(matt.handle, matt.id)
 tweet_creator(antonio.handle, antonio.id)
 tweet_creator(ian.handle, ian.id)
 tweet_creator(richard.handle, richard.id)
+tweet_creator(greg.handle, greg.id)
 
 
 

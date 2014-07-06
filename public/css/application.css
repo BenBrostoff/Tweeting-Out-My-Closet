@@ -2,6 +2,11 @@ img {
   border-radius: 40px;
 }
 
+.blue_confirm{
+  color: blue;
+  font-style: bold;
+  text-align: center;
+}
 
 body {
  /* background-image: url("http://www.chicagolandcustomclosets.com/wp-content/uploads/Maple-Reach-in2.jpg");*/
@@ -27,7 +32,7 @@ h2 {
 .center_field {
   margin-top: 9%;
   margin-left: 36%;
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 #top{

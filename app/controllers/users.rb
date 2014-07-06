@@ -1,10 +1,27 @@
 enable :sessions
 
+get '/users/signup' do
+  erb :signup
+end
+
+post '/users/new' do
+  @user = User.create(name: params[:name], email: params[:email],
+              password: params[:password],
+              password_confirmation: params[:confirm_password],
+              handle: params[:handle])
+  if @user.save
+    session[:user_id] = @user.id
+    session[:message] = "An administrator will review your twitter handle and determine its validity :-)."
+    redirect "/users/#{@user.id}"
+  else
+    @message = "You've entered invalid information!"
+  end
+end
+
 post '/users/signin' do
   @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
   if @user
     session[:user_id] = @user.id
-    p session[:user_id]
     redirect "/"
   else
     @invalid_login = true

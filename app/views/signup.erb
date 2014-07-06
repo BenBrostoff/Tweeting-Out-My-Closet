@@ -1,0 +1,44 @@
+<div class= "container">
+  <% if @message %>
+     <%= @message %>
+    <% end %>
+  <div class="center_field">
+    <h3 style="margin-left: 15%">Sign Up!</h3>
+      <form name="user" action="/users/new" method="post">
+        Name
+        <br>
+        <input name="name" type="text" placeholder="e.g. John Doe">
+        <br>
+        <br>
+        Email
+        <br>
+        <input name="email" type="email" placeholder="e.g. johndoe@gmail.com">
+        <br>
+        <br>
+        Password
+        <br>
+        <input name="password" type="password" placeholder="password">
+        <br>
+        <br>
+        Password Confirm
+        <br>
+        <input name="password_confirmation" type="password" placeholder="confirm_password">
+        <br>
+        <br>
+        Twitter Handle
+        <br>
+        <input name="handle" type="text" placeholder="e.g. johndoe">
+        <br>
+        <br>
+        <input class="button" type="submit" value="Sign Up">
+        <br>
+        <br>
+        <button style="margin-left: 15%">
+        Sign in!
+        </button>
+      </form>
+      <%if @invalid_login %>
+      <h3 style="color:red">*** Either Your Username is Wrong, Your Password is Wrong, or Everything is Wrong. ***</h3>
+      <% end %>
+    </div>
+</div>
