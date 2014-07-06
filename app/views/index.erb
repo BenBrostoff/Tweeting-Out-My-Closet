@@ -3,7 +3,7 @@
   <h2>Most Embarrassing Tweets</h2>
 
     <% @tweets.each do |tweet| %>
-      <div class="bubble">
+      <div class="bubble" id="gray">
       <%= date_format(tweet.datetime) + " " %>
       <%= datetime_am_pm(tweet.datetime) + " " %>
       <br>
@@ -14,11 +14,12 @@
       <% email = User.find(tweet.user_id).email %>
       <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
       <br>
+      <br>
       <%= "Total User Votes: " + "#{tweet.user_votes}" %>
       <br>
-      <% if tweet.user_votes != 0 %>
-        <%= "Embarrassment Rating: " + "#{tweet.average_votes}"%>
-      <% end %>
+      <%= "Embarrassment Rating: " + "#{tweet.average_votes}"%>
+      <br>
+      <button><a href="/play/rate/<%=tweet.id%>"> Rate this tweet!</a></button>
       <br>
       <br>
     </div>
@@ -29,6 +30,7 @@
   <h2> Knows DBC Best </h2>
   <% counter = 1 %>
   <% @high_scores.each do |user| %>
+    <div class="bubble">
     <%= "#{counter}. " + user.name %>
     <% email = user.email %>
     <br>
@@ -36,8 +38,11 @@
     <br>
     <%= "#{user.score} points" %>
     <br>
+    <a href="users/<%=user.id%>"> See <%=User.find(user.id).name%> 's closet! </a>
+    <br>
     <br>
     <% counter += 1 %>
+  </div>
   <% end %>
   </div>
  </div>

@@ -39,7 +39,7 @@
       <br>
       <%= "#{@this_user.name}'s Embarrassment Rating: " + "#{Vote.find_by(user_id: @this_user.id, tweet_id: tweet.id).current_votes}" %>
       <br>
-      <button><a href="/play/rate/<%=tweet.id%>"> Rate this tweet! </a></button>
+      <button><a href="/play/rate/<%=tweet.id%>"> Rate this tweet! </button>
       <br>
       </div>
   <% end %>
