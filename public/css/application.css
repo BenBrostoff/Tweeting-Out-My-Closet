@@ -9,11 +9,13 @@ body {
 .high_scores{
   float: left;
   width: 30%;
+  font-size: 20px;
+  text-align: center;
 }
 
 .tweets {
   float: right;
-  width: 70%;
+  width: 55%;
 }
 
 #red{
@@ -108,7 +110,7 @@ input[type="submit"] {
 
 .container {
   margin: 20px auto;
-  width: 800px;
+  width: 1000px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
   opacity: 1;

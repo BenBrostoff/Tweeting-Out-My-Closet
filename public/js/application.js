@@ -22,7 +22,7 @@ $(document).ready(function() {
   $(".first_button").on('click', function(e) {
     e.preventDefault();
     var ajaxRequest = $.ajax({
-      url: 'play/vote/'+tweet_id+'',
+      url: '/play/vote/'+tweet_id+'',
       type: "POST",
       data: $('form').serialize(),
     });

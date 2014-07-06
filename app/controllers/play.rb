@@ -9,6 +9,12 @@ get '/play' do #initiate game
   erb :game_page
 end
 
+get '/play/rate/:tweet_id' do
+  @tweet = Tweet.find(params[:tweet_id])
+  @author = User.find(@tweet.user_id)
+  erb :play_rate
+end
+
 post '/play/vote/:tweet_id' do #votes are created / updated in this handler
   vote_count = params["current_votes"]
   vote = Vote.where(user_id: current_user.id, tweet_id: params["tweet_id"]).first_or_create

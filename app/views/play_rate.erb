@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="bubble" id="red">
+    <%= date_format(@tweet.datetime) %>
+    <%= datetime_am_pm(@tweet.datetime) %>
+    <br>
+    <%= @tweet.text %>
+    <br>
+    <%= User.find(@tweet.user_id).name %>
+    <br>
+    <% email = User.find(@tweet.user_id).email %>
+    <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
+    <br>
+    <%= "Total User Votes: " + "#{@tweet.user_votes}" %>
+    <br>
+    <%= "Embarrassment Rating: " + "#{@tweet.average_votes}" %>
+    <br>
+    <p class="hidden_vote"><%=@tweet.id%></p>
+    <p class="hidden_vote">Share the embarrassment with your friends through this link: </p>
+    <form action="/play/vote/<%=@tweet.id%>" method="POST">
+      <input type="range"  min="0" max="100" value="50" name="current_votes">
+      <br>
+      <button type="button" class="first_button">
+      Rate this tweet!
+      <input type="submit">
+      </button>
+  </form>
+
+    <br>
+  </div>
+  </div>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="tweets">
-  <h1>Most Embarrassing Tweets</h1>
+  <h2>Most Embarrassing Tweets</h2>
 
     <% @tweets.each do |tweet| %>
       <div class="bubble">
@@ -26,12 +26,16 @@
   </div>
 
   <div class="high_scores">
-  <h1> Knows DBC Best </h1>
+  <h2> Knows DBC Best </h2>
   <% counter = 1 %>
   <% @high_scores.each do |user| %>
-    <%= "#{counter}. " + user.name + " " + "#{user.score} points" %>
+    <%= "#{counter}. " + user.name %>
     <% email = user.email %>
+    <br>
     <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
+    <br>
+    <%= "#{user.score} points" %>
+    <br>
     <br>
     <% counter += 1 %>
   <% end %>

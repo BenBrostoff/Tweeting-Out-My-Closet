@@ -17,7 +17,7 @@
       <br>
       <%= "Embarrassment Rating: " + "#{tweet.average_votes}" %>
       <br>
-      <button> Vote Up This Tweet! </button>
+      <button><a href="/play/rate/<%=tweet.id%>"> Rate this tweet!</a></button>
       <br>
     </div>
   <% end %>
@@ -37,9 +37,9 @@
       <% email = User.find(tweet.user_id).email %>
       <image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(email)%>">
       <br>
-      <%= "Your Embarrassment Rating: " + "#{Vote.find_by(user_id: @this_user.id, tweet_id: tweet.id).current_votes}" %>
+      <%= "#{@this_user.name}'s Embarrassment Rating: " + "#{Vote.find_by(user_id: @this_user.id, tweet_id: tweet.id).current_votes}" %>
       <br>
-      <button> Vote Up This Tweet! </button>
+      <button><a href="/play/rate/<%=tweet.id%>"> Rate this tweet! </a></button>
       <br>
       </div>
   <% end %>

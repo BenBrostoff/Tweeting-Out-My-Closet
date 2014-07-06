@@ -16,12 +16,8 @@ get '/users/:id' do #all your tweets and how many votes you have
   if current_user.id == params["id"].to_i
     @logged_in = true
   end
-  @tweets = []
-  Vote.where(user_id: params["id"]).each do |vote|
-    @tweets << Tweet.find(vote.tweet_id) #only tweets that were voted on
-  end
-  @tweets = @tweets.find_all{ |tweet| tweet.user_id == params["id"].to_i }
-  #only tweets that are mine and tweets that got votes
+  @tweets = Tweet.where(user_id: params["id"].to_i).order("average_votes DESC").take(5)
+  #only tweets that are users
 
   @my_votes = Vote.where(user_id: params["id"]).order("current_votes DESC").take(5)
   @my_voted_tweets = []
