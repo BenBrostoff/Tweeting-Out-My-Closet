@@ -17,6 +17,11 @@ h2 {
   text-align: center;
 }
 
+.guess_table {
+  width: 60%;
+  margin-left: 9%;
+}
+
 #top{
   margin: 0;
   float: top;
