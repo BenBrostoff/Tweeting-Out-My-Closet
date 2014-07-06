@@ -12,7 +12,7 @@ $.fn.randomize = function(selector){
 };
 
 // if you are reading this right now,
-// contact Ben Brostoff and he will add you 
+// contact Ben Brostoff and he will add you
 // as a contributor to the repo :-)
 
 
@@ -35,8 +35,9 @@ $(document).ready(function() {
     });
     ajaxRequest.done(function(data) {
       console.log("success");
-      $("p:first").text(data).css("background-color", "#00FF00").css("text-align", "center")
-      $('.hidden_vote').show()
+      $("p:first").text(data).css("background-color", "#00FF00").css("text-align", "center");
+      $(".first_button").hide();
+      $('.hidden_vote').show();
     });
     ajaxRequest.fail(function(response){
       console.log("Fail");
@@ -55,8 +56,9 @@ $(document).ready(function() {
     ajaxRequest.done(function(data) {
       console.log("success");
       console.log(tweet_id);
-      $('p.hidden_answer:first').text(data.message).css("background-color", data.color).css("text-align", "center")
-      $('.hidden_answer').show()
+      $('p.hidden_answer:first').text(data.message).css("background-color", data.color).css("text-align", "center");
+      $(".second_button").hide();
+      $('.hidden_answer').show();
     });
     ajaxRequest.fail(function(response){
       console.log("Fail");
