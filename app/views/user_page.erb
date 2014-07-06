@@ -1,8 +1,10 @@
 <div class="container">
   <div class="left_user_page">
-  <h2> What Other People Find Most Embarrassing About <%=@this_user.name%> </h2>
+  <div class="user_title">
+    <h2 id="top"> What Other People Find Most Embarrassing About <%=@this_user.name%> </h2>
+  </div>
   <% @tweets.each do |tweet| %>
-      <div class="bubble" id="red">
+      <div class="bubble" id="equalize_red">
       <%= date_format(tweet.datetime) %>
       <%= datetime_am_pm(tweet.datetime) %>
       <br>
@@ -24,9 +26,11 @@
   </div>
 
   <div class="right_user_page">
-  <h2> What <%=@this_user.name%> Finds Most Embarrassing About Other People: </h2>
+  <div class="user_title">
+  <h2 id="top"> What <%=@this_user.name%> Finds Most Embarrassing About Other People </h2>
+  </div>
    <% @my_voted_tweets.each do |tweet| %>
-      <div class="bubble">
+      <div class="bubble" id="equalize_blue">
       <%= date_format(tweet.datetime) %>
       <%= datetime_am_pm(tweet.datetime) %>
       <br>
