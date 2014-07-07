@@ -10,7 +10,7 @@ end
 
 post '/search' do
   search_term = params[:search]
-  @tweets = Tweet.where("text like?", "%#{search_term}%") 
+  @tweets = Tweet.where("text like?", "%#{search_term}%").order("average_votes DESC").order("user_votes DESC")
   @message = "Returning everything in the closet that includes #{search_term}"
   erb :search
 end
