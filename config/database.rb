@@ -38,5 +38,10 @@ ActiveRecord::Base.establish_connection(
   :username => db.user,
   :password => db.password,
   :database => DB_NAME,
-  :encoding => 'utf8'
+  :encoding => 'utf8',
+  :pool => 5,
+  :reaping_frequency => 10
 )
+
+
+
